@@ -11,8 +11,11 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', async (req, res) => {
-  res.send('Home Page');
+app.get('/ads', async (req, res) => {
+  const ads = await Ad.find({});
+  const data = await Company.find({});
+  console.log('🚀 ~ file: server.js ~ line 17 ~ app.get ~ data', data);
+  res.send(ads);
 });
 
 connect(DB_URL, {
